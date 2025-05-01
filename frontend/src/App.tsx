@@ -26,6 +26,7 @@ import Terms from './pages/Terms'
 import NotFound from './pages/NotFound'
 import { ApolloProvider } from '@apollo/client'
 import apolloClient from './config/apolloClient'
+import History from './pages/History'
 
 function ContributeButton() {
   const location = useLocation();
@@ -144,6 +145,7 @@ function App() {
               <Route path="/transactions" element={<Transactions />} />
               <Route path="/reports" element={<Reports />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
+              <Route path="/my-history" element={<History />} />
               <Route path="/support" element={<Support />} />
               <Route path="/payment" element={<Payment />} />
               <Route path="/payment-verification" element={<PaymentVerification />} />
