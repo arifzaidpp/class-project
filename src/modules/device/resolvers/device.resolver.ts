@@ -9,14 +9,14 @@ export class DeviceResolver {
     constructor(private readonly deviceService: DeviceService) {}
 
     @Query(() => Device, { nullable: true })
-    async getOrCreateDevice(
-        @Args('deviceId') deviceId: CheckDeviceInput,
-        @Context() context: { req: Request; res: Response },
-    ): Promise<Device> {
-        let device = await this.deviceService.findDeviceById(deviceId);
-        if (!device) {
-            device = await this.deviceService.createDevice(deviceId, context.req);
-        }
-        return device;
+async getOrCreateDevice(
+    @Args('deviceId') deviceId: string,  // Changed from 'data' to 'deviceId'
+    @Context() context: { req: Request; res: Response },
+): Promise<Device> {
+    let device = await this.deviceService.findDeviceById(deviceId, context.req);
+    if (!device) {
+        device = await this.deviceService.createDevice(deviceId, context.req);
     }
+    return device;
+}
 }

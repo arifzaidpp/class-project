@@ -79,4 +79,12 @@ export const cacheKeys = {
     `donation:count:status:${status}`,
   donationCountByStatusAndDevice: (status: string, deviceId: string) =>
     `donation:count:status:${status}:deviceId:${deviceId}`,
+  donationsByDevice: (deviceId: string) =>
+    `donations:deviceId:${deviceId}`,
+  donationsByStatus: (status: string) =>
+    `donations:status:${status}`,
+  donationsByStatusAndDevice: (status: string, deviceId: string) =>
+    `donations:status:${status}:deviceId:${deviceId}`,
+  donationsByDeviceAndStatus: (deviceId: string, status: string) =>
+    `donations:deviceId:${deviceId}:status:${status}`,
 };

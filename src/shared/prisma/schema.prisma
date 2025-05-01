@@ -78,7 +78,9 @@ model Donation {
   screenshotLink String?        @map("screenshot_link")
   status         DonationStatus @default(draft)
   createdAt      DateTime       @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt      DateTime       @updatedAt @map("updated_at") @db.Timestamptz
 
+  @@index([status])
   @@map("donations")
   @@schema("donation_schema")
 }
@@ -87,6 +89,7 @@ enum DonationStatus {
   draft
   pending
   confirmed
+  rejected
 
   @@schema("donation_schema")
 }

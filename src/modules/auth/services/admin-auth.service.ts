@@ -98,7 +98,7 @@ export class AdminAuthService {
             this.prisma,
             admin.id,
             req.ip || 'unknown',
-            (req.headers['user-agent'] as string) || 'unknown',
+            input.deviceId,
           );
 
           // Update last login time
@@ -146,7 +146,7 @@ export class AdminAuthService {
    * @returns Promise with success response
    */
   async adminLogout(
-    adminId: number,
+    adminId: string,
     sessionId: string,
     res: Response,
     ipAddress?: string,

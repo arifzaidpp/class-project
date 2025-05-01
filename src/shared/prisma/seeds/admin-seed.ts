@@ -16,7 +16,7 @@ export async function seedAdmins(prisma: PrismaClient): Promise<void> {
       const admin = await prisma.admin.create({
         data: {
           email: 'admin@smartclass.com',
-          password: adminPassword,
+          passwordHash: adminPassword,
         },
       });
       console.log(`Created admin with email: ${admin.email}`);

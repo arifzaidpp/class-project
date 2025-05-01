@@ -1,10 +1,18 @@
-import { faker } from '@faker-js/faker';
-import * as bcrypt from 'bcrypt';
+import { ConfigService } from '@nestjs/config';
+import * as argon2 from 'argon2';
+
+
+const configService = new ConfigService();
+const SECRET_PEPPER = configService.get<string>('passwordPepper');
 
 /**
- * Hash a password using bcrypt
+ * Hash a password using Argon2 with optimized settings for a low-RAM server.
  */
-export async function hashPassword(password: string): Promise<string> {
-  const saltRounds = 10;
-  return bcrypt.hash(password, saltRounds);
-}
+export const hashPassword = async (password: string): Promise<string> => {
+  return await argon2.hash(password + SECRET_PEPPER, {
+    type: argon2.argon2id, // Best security option
+    memoryCost: 2 ** 14, // 16MB memory usage (adjustable)
+    timeCost: 3, // Moderate security without high CPU usage
+    parallelism: 1, // Single-threaded for efficiency
+  });
+};

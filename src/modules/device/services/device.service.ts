@@ -31,30 +31,30 @@ export class DeviceService {
      * @returns Promise with the Device object
      * @throws NotFoundException if the device is not found
      */
-    async findDeviceById(input: CheckDeviceInput): Promise<Device> {
-        const cacheKey = cacheKeys.device(input.deviceId);
+    async findDeviceById(deviceId: string, req: Request): Promise<Device> {
+        const cacheKey = cacheKeys.device(deviceId);
 
         // Try to get the device from cache
         const cachedDevice = await this.cacheService.get<Device>(cacheKey);
         if (cachedDevice) {
-            this.logger.log(`Cache hit for device ID ${input.deviceId}`);
+            this.logger.log(`Cache hit for device ID ${deviceId}`);
             return cachedDevice;
         }
 
         // Fetch from database if not in cache
         const device = await this.prisma.device.findUnique({
-            where: { deviceId: input.deviceId },
+            where: { deviceId: deviceId },
             include: {
                 donations: true,
             },
         });
 
         if (!device) {
-            this.logger.warn(`Device with ID ${input.deviceId} not found`);
-            throw new NotFoundException(`Device with ID ${input.deviceId} not found`);
+            this.logger.warn(`Device with ID ${deviceId} not found, creating a new one`);
+            return this.createDevice(deviceId, req);
         }
 
-        this.logger.log(`Device with ID ${input.deviceId} found`);
+        this.logger.log(`Device with ID ${deviceId} found`);
 
         // Add to the cache
         await this.cacheService.set(cacheKey, device, this.ttl);
@@ -68,19 +68,21 @@ export class DeviceService {
      * @param input - Input containing the device ID
      * @returns Promise with the newly created Device object
      */
-    async createDevice(input: CheckDeviceInput, req: Request): Promise<Device> {
+    async createDevice(deviceId: string, req: Request): Promise<Device> {
+        console.log(`Device type: ${req.headers['user-agent']}`);
+        
         const newDevice = await this.prisma.device.create({
             data: {
-                deviceId: input.deviceId,
+                deviceId: deviceId,
                 deviceType: req.headers['user-agent'] as string || 'unknown',
                 createdAt: new Date(),
             },
         });
 
-        this.logger.log(`Device with ID ${input.deviceId} created successfully`);
+        this.logger.log(`Device with ID ${deviceId} created successfully`);
 
         // Cache the newly created device
-        const cacheKey = cacheKeys.device(input.deviceId);
+        const cacheKey = cacheKeys.device(deviceId);
         await this.cacheService.set(cacheKey, newDevice, this.ttl);
 
         return newDevice;

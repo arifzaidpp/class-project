@@ -25,10 +25,15 @@ export class AdminAuthResolver {
   @UseGuards(AdminAuthGuard)
   async adminLogout(
     @Context() context: { req: Request; res: Response },
+    @CurrentAdmin() admin: Admin,
   ): Promise<SuccessResponse> {
     // Get sessionId from the cookies
     const sessionId = context.req.cookies.adminSessionId;
-    // This would need to be implemented in AdminAuthService similarly to the user logout
+    if (!sessionId) {
+      return { success: false };
+    }
+    // Clear the session
+    await this.adminAuthService.adminLogout(admin.id, sessionId, context.res);
     return { success: true };
   }
 

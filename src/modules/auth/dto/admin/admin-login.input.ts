@@ -7,6 +7,15 @@ import { Field, InputType } from '@nestjs/graphql';
 @InputType()
 export class AdminLoginDto {
   /**
+   * device ID
+   * @example "device123"
+   */
+  @Field()
+  @IsNotEmpty({ message: 'Device ID is required' })
+  @IsString()
+  deviceId: string;
+
+  /**
    * Admin email address
    * @example "admin@thelicham.com"
    */

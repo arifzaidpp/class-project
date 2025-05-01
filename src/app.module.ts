@@ -46,7 +46,8 @@ import { ScheduleModule } from '@nestjs/schedule';
 // Other imports
 import { ThrottlerModule, ThrottlerStorageService } from '@nestjs/throttler';
 import { CustomThrottlerGuard } from './common/guards/throttler.guard';
-import { SubscriptionModule } from './modules/subscription/subscription.module';
+import { DeviceModule } from './modules/device/device.module';
+import { DonationModule } from './modules/donations/donation.module';
 
 // Other imports
 
@@ -211,7 +212,8 @@ import { SubscriptionModule } from './modules/subscription/subscription.module';
     AuthModule,
     // Modules
     AdminModule,
-    SubscriptionModule,
+    DeviceModule,
+    DonationModule,
 
   ],
   controllers: [AppController],

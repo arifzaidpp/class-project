@@ -12,6 +12,21 @@ export async function seedAdminSessions(prisma: PrismaClient): Promise<void> {
         throw new Error('Admin user not found');
     }
 
+    // First, try to find an existing device
+    let device = await prisma.device.findFirst();
+
+    // If no device exists, create a specific one for admin
+    if (!device) {
+        device = await prisma.device.create({
+            data: {
+                deviceId: 'admin-device-id',
+                deviceType: 'admin-workstation',
+                createdAt: new Date(),
+            },
+        });
+        console.log('Created admin device');
+    }
+
     const existingSession = await prisma.adminSession.findFirst({
         where: { adminId: admin.id },
     });
@@ -25,7 +40,7 @@ export async function seedAdminSessions(prisma: PrismaClient): Promise<void> {
                     adminId: admin.id,
                     expires: new Date(Date.now() + 1000 * 60 * 60 * 24), // 24 hours from now
                     ipAddress: '127.0.0.1',
-                    deviceId: 'device-12345',
+                    deviceId: device.deviceId, // Use the found or created device ID
                     loginMethod: 'password',
                     lastActiveAt: new Date(),
                 },

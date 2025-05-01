@@ -12,7 +12,7 @@ export class AdminAuthGuard extends AuthGuard('admin-session') {
   }
   
   handleRequest(err: any, admin: any) {
-    if (err || !admin || !admin.isActive) {
+    if (err || !admin ) {
       throw new UnauthorizedException('Not authenticated as admin');
     }
     return admin;

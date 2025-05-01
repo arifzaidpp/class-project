@@ -20,8 +20,8 @@ export class Admin {
   /**
    * Hashed password
    */
-  @Field()
-  passwordHash: string;
+  @Field({ nullable: true })
+  passwordHash?: string;
 
   /**
    * Last login timestamp

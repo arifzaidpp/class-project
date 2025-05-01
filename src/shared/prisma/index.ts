@@ -28,32 +28,32 @@ export async function seedAll() {
     await cleanDatabase(prisma);
   }
 
-  // // Seed static data
-  // console.log('Seeding static data...');
+  // Seed static data
+  console.log('Seeding static data...');
 
-  // // Seed admin
-  // console.log('Seeding admins...');
-  // await seedAdmins(prisma);
+  // Seed admin
+  console.log('Seeding admins...');
+  await seedAdmins(prisma);
 
-  // // Seed admin sessions
-  // console.log('Seeding admin sessions...');
-  // await seedAdminSessions(prisma);
+  // Seed devices
+  console.log('Seeding devices...');
+  await seedDevices(prisma);
   
-  // // Seed devices
-  // console.log('Seeding devices...');
-  // await seedDevices(prisma);
+  // Seed admin sessions
+  console.log('Seeding admin sessions...');
+  await seedAdminSessions(prisma);
 
-  // // Seed donations
-  // console.log('Seeding donations...');
-  // await seedDonations(prisma);
+  // Seed donations
+  console.log('Seeding donations...');
+  await seedDonations(prisma);
 
-  // // Seed locations
-  // console.log('Seeding locations...');
-  // await seedLocations(prisma);
+  // Seed locations
+  console.log('Seeding locations...');
+  await seedLocations(prisma);
 
-  // // Seeed sponsors
-  // console.log('Seeding sponsors...');
-  // await seedSponsors(prisma);
+  // Seeed sponsors
+  console.log('Seeding sponsors...');
+  await seedSponsors(prisma);
 
   console.log('Database seeding completed successfully!');
 }
