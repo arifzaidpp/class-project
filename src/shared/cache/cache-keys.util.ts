@@ -38,5 +38,17 @@ export const cacheKeys = {
   // passwordReset: (token: string) => `password-reset:${token}`,
   // adminPasswordReset: (token: string) => `admin-password-reset:${token}`,
 
+  admin: (id: string) => `admin:id-${id}`,
+  admins: (
+    search = '',
+    take = 10,
+    skip = 0,
+    field = 'id',
+    direction = 'ASC',
+    filter?: any,
+  ) =>
+    `admins:search:${search}:take:${take}:skip:${skip}:field:${field}:direction:${direction}:filter:${JSON.stringify(filter)}`,
+  adminCount: (filter?: any) => `admin:count:${JSON.stringify(filter)}`,
+
   
 };
