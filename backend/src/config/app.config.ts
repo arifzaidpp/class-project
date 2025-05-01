@@ -9,13 +9,13 @@ export default registerAs('app', () => ({
   apiPrefix: process.env.API_PREFIX || 'api',
   
   // URLs
-  baseUrl: process.env.BASE_URL || 'http://localhost:3000',
-  frontendUrl: process.env.FRONTEND_URL || 'http://localhost:3000',
+  baseUrl: process.env.BASE_URL || 'http://localhost:5173',
+  frontendUrl: process.env.FRONTEND_URL || 'http://localhost:5173',
   
   // CORS settings
   cors: {
     enabled: process.env.CORS_ENABLED === 'true',
-    origin: process.env.CORS_ORIGIN?.split(',') || ['http://localhost:3000'],
+    origin: process.env.CORS_ORIGIN?.split(',') || ['http://localhost:5173'],
     credentials: true,
   },
   

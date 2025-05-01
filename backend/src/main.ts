@@ -65,10 +65,11 @@ async function bootstrap() {
 
   // Enable CORS for all domains
   app.enableCors({
-    origin: '*',
+    origin: ["http://localhost:5173", '*'], // For production, be more specific
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     preflightContinue: false,
     optionsSuccessStatus: 204,
+    credentials: true, // Add this line to enable credentials
   });
 
   // Set global prefix if configured

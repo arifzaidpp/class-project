@@ -1,13 +1,7 @@
-# Compiled output
+# compiled output
 /dist
 /node_modules
 /build
-/frontend/dist
-/frontend/node_modules
-/frontend/build
-/backend/dist
-/backend/node_modules
-/backend/build
 
 # Logs
 logs
@@ -17,31 +11,22 @@ pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
-/frontend/logs
-/backend/logs
 
 # Lock files
 package-lock.json
 yarn.lock
 .pnpm-lock.yaml
 .npmrc
-/frontend/package-lock.json
-/frontend/yarn.lock
-/backend/package-lock.json
-/backend/yarn.lock
 
 # OS
 .DS_Store
 
 # Schema
 /src/schema.gql
-/backend/src/schema.gql
 
 # Tests
 /coverage
 /.nyc_output
-/frontend/coverage
-/backend/coverage
 
 # IDEs and editors
 /.idea
@@ -65,18 +50,10 @@ yarn.lock
 .env.test.local
 .env.production.local
 .env.local
-/frontend/.env
-/frontend/.env.*
-/backend/.env
-/backend/.env.*
 
 # temp directory
 .temp
 .tmp
-/frontend/.temp
-/frontend/.tmp
-/backend/.temp
-/backend/.tmp
 
 # Runtime data
 pids
