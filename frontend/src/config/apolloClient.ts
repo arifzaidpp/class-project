@@ -14,7 +14,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 // HTTP link to your GraphQL API
 const httpLink = new HttpLink({
-  uri: 'http://localhost:3000/graphql', // Replace with your backend URL
+  uri: import.meta.env.VITE_GRAPHQL_API_URL || 'http://localhost:3000/graphql', // Replace with your backend URL
   credentials: 'include', // Important for auth cookies
 });
 

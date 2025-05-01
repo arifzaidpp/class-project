@@ -25,7 +25,7 @@ function About() {
         <section className="text-center mb-12">
           <div className="relative w-32 h-32 mx-auto mb-6">
             <img
-              src="https://images.pexels.com/photos/207692/pexels-photo-207692.jpeg"
+              src="https://wtoieoeidtsernqhaqxx.supabase.co/storage/v1/object/sign/munashata/WhatsApp%20Image%202025-05-01%20at%2020.44.29%20(2).jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2I2MTRjNTQ5LThiZmYtNDI2Zi05YmJlLTk2MDQzMGQwYmQxMiJ9.eyJ1cmwiOiJtdW5hc2hhdGEvV2hhdHNBcHAgSW1hZ2UgMjAyNS0wNS0wMSBhdCAyMC40NC4yOSAoMikuanBlZyIsImlhdCI6MTc0NjE0MDgyOSwiZXhwIjoxNzc3Njc2ODI5fQ.euSUpw4MvtVUwSM6sfd1_x9TfvpeMjLDoULOZCUC1uo"
               alt="College Logo"
               className="w-full h-full rounded-full object-cover border-4 border-primary-200 dark:border-primary-700"
             />
@@ -37,7 +37,7 @@ function About() {
             />
           </div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-            Government College
+            Darul Uloom Islamic Da'wa College
           </h1>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Established in 1995, our institution has been at the forefront of quality education,
@@ -49,12 +49,12 @@ function About() {
         <section className="bg-gradient-to-br from-primary-50 to-blue-100 dark:from-gray-700 dark:to-gray-600 rounded-lg p-6">
           <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">Contact Information</h2>
           <div className="space-y-2 text-gray-600 dark:text-gray-300">
-            <p>Government College Road,</p>
+            <p>DUIDC Thootha Road,</p>
             <p>Near Bus Stand,</p>
             <p>City - 123456</p>
             <p>State, India</p>
             <p>Phone: +91 1234567890</p>
-            <p>Email: info@govtcollege.edu.in</p>
+            <p>Email: info@dudc@gmail.com</p>
           </div>
         </section>
 
@@ -67,7 +67,7 @@ function About() {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <img
-                src="/hamsafar-logo.png"
+                src="https://wtoieoeidtsernqhaqxx.supabase.co/storage/v1/object/sign/munashata/WhatsApp%20Image%202025-05-01%20at%2020.44.30%20(2).jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2I2MTRjNTQ5LThiZmYtNDI2Zi05YmJlLTk2MDQzMGQwYmQxMiJ9.eyJ1cmwiOiJtdW5hc2hhdGEvV2hhdHNBcHAgSW1hZ2UgMjAyNS0wNS0wMSBhdCAyMC40NC4zMCAoMikuanBlZyIsImlhdCI6MTc0NjE0MDg1NSwiZXhwIjoxNzc3Njc2ODU1fQ.0f7SwATdW9DYR5YRUnbvVUHtrjvuyjeAf07hxhLLdPI"
                 alt="Smart Class Logo"
                 className="w-24 h-24"
               />
@@ -80,7 +80,7 @@ function About() {
             </motion.div>
           </div>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-4">
-            Smart Class Initiative
+            Munashata Smart Class Initiative
           </h2>
           <p className="text-gray-600 dark:text-gray-300 text-center mb-8">
             A project aimed at modernizing our classrooms and enhancing the learning experience
@@ -94,7 +94,7 @@ function About() {
               className="rounded-lg overflow-hidden shadow-md"
             >
               <img
-                src="https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg"
+                src="https://wtoieoeidtsernqhaqxx.supabase.co/storage/v1/object/sign/munashata/WhatsApp%20Image%202025-05-01%20at%2020.44.27%20(2).jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2I2MTRjNTQ5LThiZmYtNDI2Zi05YmJlLTk2MDQzMGQwYmQxMiJ9.eyJ1cmwiOiJtdW5hc2hhdGEvV2hhdHNBcHAgSW1hZ2UgMjAyNS0wNS0wMSBhdCAyMC40NC4yNyAoMikuanBlZyIsImlhdCI6MTc0NjE0MDk2MywiZXhwIjoxNzc3Njc2OTYzfQ.7RVpSSp6MFWybAj4XkXXMzUIXF6soln3AYt5rs3Z4BQ"
                 alt="Donation Request Letter"
                 className="w-full h-48 object-cover"
               />
@@ -108,7 +108,7 @@ function About() {
               className="rounded-lg overflow-hidden shadow-md"
             >
               <img
-                src="https://images.pexels.com/photos/5905555/pexels-photo-5905555.jpeg"
+                src="https://wtoieoeidtsernqhaqxx.supabase.co/storage/v1/object/sign/munashata/WhatsApp%20Image%202025-05-01%20at%2020.44.31.jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2I2MTRjNTQ5LThiZmYtNDI2Zi05YmJlLTk2MDQzMGQwYmQxMiJ9.eyJ1cmwiOiJtdW5hc2hhdGEvV2hhdHNBcHAgSW1hZ2UgMjAyNS0wNS0wMSBhdCAyMC40NC4zMS5qcGVnIiwiaWF0IjoxNzQ2MTQwOTA2LCJleHAiOjE3Nzc2NzY5MDZ9.fwPyJ_cVA6wHs3Fad8qFNHNzEfpdNvSPGh5f62Jbpxg"
                 alt="Project Tariff"
                 className="w-full h-48 object-cover"
               />
@@ -123,7 +123,7 @@ function About() {
             <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">Project Brochure</h3>
             <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md">
               <Document
-                file="/path/to/brochure.pdf"
+                file="https://wtoieoeidtsernqhaqxx.supabase.co/storage/v1/object/sign/munashata/brocure.pdf?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2I2MTRjNTQ5LThiZmYtNDI2Zi05YmJlLTk2MDQzMGQwYmQxMiJ9.eyJ1cmwiOiJtdW5hc2hhdGEvYnJvY3VyZS5wZGYiLCJpYXQiOjE3NDYxNDEwMTIsImV4cCI6MTc3NzY3NzAxMn0.DB9Ko6wI9lT5yEt3959DkKM9av5k8yrI8rnB33ccNkk"
                 onLoadSuccess={onDocumentLoadSuccess}
                 className="mx-auto"
               >

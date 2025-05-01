@@ -18,17 +18,17 @@ function Home() {
   
   const banners = [
     {
-      image: "https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg",
-      title: "Smart Class Donation",
+      image: "https://wtoieoeidtsernqhaqxx.supabase.co/storage/v1/object/sign/munashata/WhatsApp%20Image%202025-05-01%20at%2020.44.28%20(1).jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2I2MTRjNTQ5LThiZmYtNDI2Zi05YmJlLTk2MDQzMGQwYmQxMiJ9.eyJ1cmwiOiJtdW5hc2hhdGEvV2hhdHNBcHAgSW1hZ2UgMjAyNS0wNS0wMSBhdCAyMC40NC4yOCAoMSkuanBlZyIsImlhdCI6MTc0NjE0MDQ5OSwiZXhwIjoxNzc3Njc2NDk5fQ.Vc0Yxe9XDpYd361j-2XsIr-XqGwLLfYp_oMYxW9L1vk",
+      title: "Munashata Smart Class Donation",
       description: "Help us build a better future through digital education"
     },
     {
-      image: "https://images.pexels.com/photos/8199562/pexels-photo-8199562.jpeg",
+      image: "https://wtoieoeidtsernqhaqxx.supabase.co/storage/v1/object/sign/munashata/WhatsApp%20Image%202025-05-01%20at%2020.44.25%20(1).jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2I2MTRjNTQ5LThiZmYtNDI2Zi05YmJlLTk2MDQzMGQwYmQxMiJ9.eyJ1cmwiOiJtdW5hc2hhdGEvV2hhdHNBcHAgSW1hZ2UgMjAyNS0wNS0wMSBhdCAyMC40NC4yNSAoMSkuanBlZyIsImlhdCI6MTc0NjE0MDU5OCwiZXhwIjoxNzc3Njc2NTk4fQ.RFzp-1z5Jtmkc7g7idt-pUgVp-54cD-Sj1MOFjZayfU",
       title: "Empower Education",
       description: "Your contribution makes a difference in students' lives"
     },
     {
-      image: "https://images.pexels.com/photos/5905555/pexels-photo-5905555.jpeg",
+      image: "https://wtoieoeidtsernqhaqxx.supabase.co/storage/v1/object/sign/munashata/WhatsApp%20Image%202025-05-01%20at%2020.44.29.jpeg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2I2MTRjNTQ5LThiZmYtNDI2Zi05YmJlLTk2MDQzMGQwYmQxMiJ9.eyJ1cmwiOiJtdW5hc2hhdGEvV2hhdHNBcHAgSW1hZ2UgMjAyNS0wNS0wMSBhdCAyMC40NC4yOS5qcGVnIiwiaWF0IjoxNzQ2MTQwNjM4LCJleHAiOjE3Nzc2NzY2Mzh9.mM795D4HQ261WgAbkFkiNOmHOdyWykqnk6iard9BPJg",
       title: "Digital Learning",
       description: "Supporting modern education infrastructure"
     }
@@ -384,9 +384,9 @@ function Home() {
       </section>
 
       {/* Rest of the component remains unchanged */}
-      <div className="grid md:grid-cols-2 gap-6">
+      {/* <div className="grid md:grid-cols-2 gap-6"> */}
         {/* Video Section */}
-        <div className="relative h-[400px] bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden">
+        {/* <div className="relative h-[400px] bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden">
           <iframe
             src="https://www.youtube.com/embed/dQw4w9WgXcQ"
             title="Smart Class Initiative"
@@ -394,13 +394,13 @@ function Home() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
-        </div>
+        </div> */}
 
         {/* Share App Section */}
-        <div className="bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg shadow-lg h-[400px] flex flex-col">
-          <div className="grid grid-cols-2 flex-1">
+        {/* <div className="bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg shadow-lg h-[400px] flex flex-col">
+          <div className="grid grid-cols-2 flex-1"> */}
             {/* Left side - Logo and QR */}
-            <div className="p-6 flex flex-col items-center justify-center border-r border-primary-400/30">
+            {/* <div className="p-6 flex flex-col items-center justify-center border-r border-primary-400/30">
               <div className="bg-white p-4 rounded-2xl mb-6">
                 <img src="/hamsafar-logo.png" alt="Hamsafar Logo" className="h-16 w-16" />
               </div>
@@ -414,10 +414,10 @@ function Home() {
               <p className="mt-4 text-center text-primary-100 text-sm">
                 Scan to share
               </p>
-            </div>
+            </div> */}
 
             {/* Right side - App Preview */}
-            <div className="p-6 flex flex-col items-center justify-center relative">
+            {/* <div className="p-6 flex flex-col items-center justify-center relative">
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -433,10 +433,10 @@ function Home() {
                 />
               </motion.div>
             </div>
-          </div>
+          </div> */}
 
           {/* Share button at bottom */}
-          <div className="p-4 border-t border-primary-400/30">
+          {/* <div className="p-4 border-t border-primary-400/30">
             <motion.button
               onClick={handleShare}
               whileHover={{ scale: 1.02 }}
@@ -448,7 +448,7 @@ function Home() {
             </motion.button>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* App Support Section */}
       <section className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">

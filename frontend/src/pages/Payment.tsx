@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { QrCodeIcon, CurrencyRupeeIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
@@ -6,20 +6,22 @@ import { motion } from 'framer-motion';
 function Payment() {
   const navigate = useNavigate();
   const [showBankDetails, setShowBankDetails] = useState(false);
+  const location = useLocation();
+  const { donationId, amount, name } = location.state || {};
 
   const handleUPIPayment = () => {
-    const amount = "1000"; // Replace with actual amount
+    const paymentAmount = amount || "1000"; // Use the passed amount or default
     const userAgent = navigator.userAgent.toLowerCase();
     const isChrome = userAgent.includes("chrome");
     const isMobile = /android|iphone|ipad|mobile/.test(userAgent);
     
     let paymentUrl;
     if (isChrome && !isMobile) {
-      paymentUrl = `upi://pay?pa=arifzaidaiju@oksbi&pn=Smart%20Class&am=${amount}.00&cu=INR&tn=Smart%20Class%20Donation`;
+      paymentUrl = `upi://pay?pa=payment@upi&pn=Smart%20Class&am=${paymentAmount}.00&cu=INR&tn=Smart%20Class%20Donation`;
     } else if (isChrome && isMobile) {
-      paymentUrl = `intent://pay?pa=arifzaidaiju@oksbi&pn=Smart%20Class&am=${amount}.00&cu=INR&tn=Smart%20Class%20Donation#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end;`;
+      paymentUrl = `intent://pay?pa=payment@upi&pn=Smart%20Class&am=${paymentAmount}.00&cu=INR&tn=Smart%20Class%20Donation#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end;`;
     } else {
-      paymentUrl = `upi://pay?pa=arifzaidaiju@oksbi&pn=Smart%20Class&am=${amount}.00&cu=INR&tn=Smart%20Class%20Donation`;
+      paymentUrl = `upi://pay?pa=payment@upi&pn=Smart%20Class&am=${paymentAmount}.00&cu=INR&tn=Smart%20Class%20Donation`;
     }
 
     window.location.href = paymentUrl;
@@ -83,7 +85,12 @@ function Payment() {
               )}
 
               <button
-                onClick={() => navigate('/payment-verification')}
+                onClick={() => navigate('/payment-verification', { 
+                  state: { 
+                    donationId,
+                    amount
+                  } 
+                })}
                 className="mt-4 w-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 py-3 px-6 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
               >
                 Continue to Verification
