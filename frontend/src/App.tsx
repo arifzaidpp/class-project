@@ -27,6 +27,8 @@ import NotFound from './pages/NotFound'
 import { ApolloProvider } from '@apollo/client'
 import apolloClient from './config/apolloClient'
 import History from './pages/History'
+import { DeviceRegistration } from './components/DeviceRegistration';
+
 
 function ContributeButton() {
   const location = useLocation();
@@ -131,6 +133,7 @@ function App() {
   return (
     <ApolloProvider client={apolloClient}>
       <Router>
+        <DeviceRegistration />
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
           <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
           <ScrollToTop />
