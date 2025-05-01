@@ -22,7 +22,7 @@ interface AddDonationVars {
 }
 
 const ADD_DONATION = gql`
-  mutation AddDonation($data: AddDonationInput!) {
+  mutation addDonation($data: AddDonationInput!) {
     addDonation(data: $data) {
       id
       deviceId
