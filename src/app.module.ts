@@ -48,7 +48,7 @@ import { ThrottlerModule, ThrottlerStorageService } from '@nestjs/throttler';
 import { CustomThrottlerGuard } from './common/guards/throttler.guard';
 import { DeviceModule } from './modules/device/device.module';
 import { DonationModule } from './modules/donations/donation.module';
-import { SponsorItemModule } from './modules/sponsor-item/sponsor-item.module';
+import { SponsorshipModule } from './modules/sponsor-item/sponsorship.module';
 
 // Other imports
 
@@ -215,7 +215,7 @@ import { SponsorItemModule } from './modules/sponsor-item/sponsor-item.module';
     AdminModule,
     DeviceModule,
     DonationModule,
-    SponsorItemModule,
+    SponsorshipModule,
 
   ],
   controllers: [AppController],

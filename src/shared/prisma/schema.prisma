@@ -148,6 +148,8 @@ model Sponsor {
   imageLink     String                @map("image_link")
   role          String
   place         String
+  createdAt     DateTime             @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt     DateTime             @updatedAt @map("updated_at") @db.Timestamptz
   contributions SponsorContribution[]
 
   @@map("sponsors")
