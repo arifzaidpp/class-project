@@ -1,0 +1,136 @@
+// This is the Prisma schema file for Smart Class Project.
+// Documentation: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearchPostgres", "postgresqlExtensions", "multiSchema"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  extensions = [pgcrypto, postgis, pg_trgm]
+  schemas    = ["auth_schema", "donation_schema", "location_schema", "sponsorship_schema"]
+}
+
+// ======== ADMIN SCHEMA ========
+model Admin {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("admins")
+  @@schema("auth_schema")
+}
+
+// ======== DEVICE SCHEMA ========
+
+model Device {
+  deviceId   String    @id @unique @map("device_id")
+  deviceType String    @map("device_type")
+  donations  Donation[]
+  createdAt  DateTime  @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("devices")
+  @@schema("auth_schema")
+}
+
+// ======== DONATION SCHEMA ========
+
+model Donation {
+  id             String         @id @default(uuid())
+  deviceId       String         @map("device_id")
+  device         Device         @relation(fields: [deviceId], references: [deviceId], onDelete: Cascade)
+  name           String
+  phoneNumber    String         @map("phone_number")
+  amount         Float
+  countryName    String         @map("country_name")
+  stateName      String         @map("state_name")
+  cityName       String         @map("city_name")
+  pincode        String
+  screenshotLink String?        @map("screenshot_link")
+  status         DonationStatus @default(draft)
+  createdAt      DateTime       @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("donations")
+  @@schema("donation_schema")
+}
+
+enum DonationStatus {
+  draft
+  pending
+  confirmed
+
+  @@schema("donation_schema")
+}
+
+// ======== LOCATION SCHEMA ========
+
+model Country {
+  id     String  @id @default(uuid())
+  name   String  @unique
+  states State[]
+
+  @@map("countries")
+  @@schema("location_schema")
+}
+
+model State {
+  id        String  @id @default(uuid())
+  name      String
+  countryId String  @map("country_id")
+  country   Country @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  cities    City[]
+
+  @@map("states")
+  @@schema("location_schema")
+}
+
+model City {
+  id       String  @id @default(uuid())
+  name     String
+  stateId  String  @map("state_id")
+  state    State   @relation(fields: [stateId], references: [id], onDelete: Cascade)
+
+  @@map("cities")
+  @@schema("location_schema")
+}
+
+// ======== SPONSORSHIP SCHEMA ========
+
+model SponsorItem {
+  id              String                @id @default(uuid())
+  itemName        String                @map("item_name")
+  price           Float
+  count           Int
+  sponsoredCount  Int                   @default(0) @map("sponsored_count")
+  contributions   SponsorContribution[]
+
+  @@map("sponsor_items")
+  @@schema("sponsorship_schema")
+}
+
+model Sponsor {
+  id            String                @id @default(uuid())
+  name          String
+  imageLink     String                @map("image_link")
+  role          String
+  place         String
+  contributions SponsorContribution[]
+
+  @@map("sponsors")
+  @@schema("sponsorship_schema")
+}
+
+model SponsorContribution {
+  sponsorId        String         @map("sponsor_id")
+  sponsor          Sponsor        @relation(fields: [sponsorId], references: [id], onDelete: Cascade)
+  itemId           String         @map("item_id")
+  sponsorItem      SponsorItem    @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  countContributed Int            @map("count_contributed")
+
+  @@id([sponsorId, itemId])
+  @@map("sponsor_contributions")
+  @@schema("sponsorship_schema")
+}
