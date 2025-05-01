@@ -8,6 +8,7 @@ export function useGraphQLQuery<TData = any, TVariables extends OperationVariabl
     fetchPolicy?: 'cache-first' | 'network-only' | 'cache-and-network' | 'no-cache';
     notifyOnNetworkStatusChange?: boolean;
     pollInterval?: number;
+    skip?: boolean;
   }
 ) {
   return useQuery<TData, TVariables>(query, {

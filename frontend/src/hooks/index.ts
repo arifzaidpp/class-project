@@ -8,3 +8,4 @@ export * from './graphql/queries/get-or-create-device';
 export * from './graphql/mutations/add-donation';
 export * from './graphql/mutations/update-donation';
 export * from './graphql/queries/top-donors';
+export * from './graphql/queries/sponsor-item';

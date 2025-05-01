@@ -113,11 +113,32 @@ function Home() {
   const quickPayAmounts = [100, 500, 1000, 5000]
 
   // Map sponsor items data from backend to UI format
-  const sponsorItems = sponsorItemsLoading || !sponsorItemsData ? [
+  // Define interfaces for sponsor items
+  interface SponsorItemData {
+    id: string;
+    itemName: string;
+    price: number;
+    count: number;
+    sponsoredCount: number;
+  }
+
+  interface SponsorItemsData {
+    getAllSponsorItems: SponsorItemData[];
+  }
+
+  interface FormattedSponsorItem {
+    name: string;
+    price: string;
+    progress: number;
+    count: number;
+    id: string;
+  }
+
+  const sponsorItems: FormattedSponsorItem[] = sponsorItemsLoading || !sponsorItemsData ? [
     // Fallback data until loading completes
     { name: "Loading...", price: "...", progress: 0, count: 0, id: "loading" }
-  ] : sponsorItemsData.getAllSponsorItems.map(item => {
-    const progress = item.count > 0 ? Math.round((item.sponsoredCount / item.count) * 100) : 0;
+  ] : (sponsorItemsData as SponsorItemsData).getAllSponsorItems.map((item: SponsorItemData) => {
+    const progress: number = item.count > 0 ? Math.round((item.sponsoredCount / item.count) * 100) : 0;
     return {
       name: item.itemName,
       price: `₹${item.price.toLocaleString('en-IN')}`,

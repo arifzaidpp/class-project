@@ -29,15 +29,15 @@ import apolloClient from './config/apolloClient'
 
 function ContributeButton() {
   const location = useLocation();
-  
-  if (location.pathname.includes('/contribute') || 
-      location.pathname.includes('/payment') || 
-      location.pathname.includes('payment-verification') || 
-      location.pathname.includes('payment-success') ||
-      location.pathname.includes('/admin') ||
-      location.pathname.includes('/privacy') ||
-      location.pathname.includes('/terms') ||
-      location.pathname === '/about') {
+
+  if (location.pathname.includes('/contribute') ||
+    location.pathname.includes('/payment') ||
+    location.pathname.includes('payment-verification') ||
+    location.pathname.includes('payment-success') ||
+    location.pathname.includes('/admin') ||
+    location.pathname.includes('/privacy') ||
+    location.pathname.includes('/terms') ||
+    location.pathname === '/about') {
     return null;
   }
 
@@ -129,41 +129,41 @@ function App() {
 
   return (
     <ApolloProvider client={apolloClient}>
-    <Router>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
-        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
-        <ScrollToTop />
-        
-        <main className="container mx-auto px-4 py-8 pb-28 mt-16">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contribute" element={<Contribute />} />
-            <Route path="/contribute/:amount" element={<Contribute />} />
-            <Route path="/contribute/sponsor/:item" element={<Contribute />} />
-            <Route path="/transactions" element={<Transactions />} />
-            <Route path="/reports" element={<Reports />} />
-            <Route path="/leaderboard" element={<Leaderboard />} />
-            <Route path="/support" element={<Support />} />
-            <Route path="/payment" element={<Payment />} />
-            <Route path="/payment-verification" element={<PaymentVerification />} />
-            <Route path="/payment-success" element={<PaymentSuccess />} />
-            <Route path="/privacy" element={<Privacy/>} />
-            <Route path='/terms' element={<Terms/>} />
-            <Route path='*' element={<NotFound/>} />
-            
-            {/* Admin Routes */}
-            <Route path="/admin/login" element={<Login />} />
-            <Route path="/admin" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-            <Route path="/admin/payments" element={<ProtectedRoute><AdminPayments /></ProtectedRoute>} />
-            <Route path="/admin/payments/:id" element={<ProtectedRoute><PaymentDetails /></ProtectedRoute>} />
-            <Route path="/admin/sponsor-items" element={<ProtectedRoute><SponsorItems /></ProtectedRoute>} />
-            <Route path="/admin/manage-sponsors" element={<ProtectedRoute><ManageSponsors /></ProtectedRoute>} />
-          </Routes>
-        </main>
-        <ContributeButton />
-      </div>
-    </Router>
+      <Router>
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+          <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+          <ScrollToTop />
+
+          <main className="container mx-auto px-4 py-8 pb-28 mt-16">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contribute" element={<Contribute />} />
+              <Route path="/contribute/:amount" element={<Contribute />} />
+              <Route path="/contribute/sponsor/:sponsor" element={<Contribute />} />
+              <Route path="/transactions" element={<Transactions />} />
+              <Route path="/reports" element={<Reports />} />
+              <Route path="/leaderboard" element={<Leaderboard />} />
+              <Route path="/support" element={<Support />} />
+              <Route path="/payment" element={<Payment />} />
+              <Route path="/payment-verification" element={<PaymentVerification />} />
+              <Route path="/payment-success" element={<PaymentSuccess />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path='/terms' element={<Terms />} />
+              <Route path='*' element={<NotFound />} />
+
+              {/* Admin Routes */}
+              <Route path="/admin/login" element={<Login />} />
+              <Route path="/admin" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+              <Route path="/admin/payments" element={<ProtectedRoute><AdminPayments /></ProtectedRoute>} />
+              <Route path="/admin/payments/:id" element={<ProtectedRoute><PaymentDetails /></ProtectedRoute>} />
+              <Route path="/admin/sponsor-items" element={<ProtectedRoute><SponsorItems /></ProtectedRoute>} />
+              <Route path="/admin/manage-sponsors" element={<ProtectedRoute><ManageSponsors /></ProtectedRoute>} />
+            </Routes>
+          </main>
+          <ContributeButton />
+        </div>
+      </Router>
     </ApolloProvider>
   )
 }
