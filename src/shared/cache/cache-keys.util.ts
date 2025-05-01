@@ -87,4 +87,23 @@ export const cacheKeys = {
     `donations:status:${status}:deviceId:${deviceId}`,
   donationsByDeviceAndStatus: (deviceId: string, status: string) =>
     `donations:deviceId:${deviceId}:status:${status}`,
+
+  sponsorItem: (id: string) => `sponsor-item:id-${id}`,
+  sponsorItems: (
+    search = '',
+    take = 10,
+    skip = 0,
+    field = 'id',
+    direction = 'ASC',
+    filter?: any,
+  ) =>
+    `sponsor-items:search:${search}:take:${take}:skip:${skip}:field:${field}:direction:${direction}:filter:${JSON.stringify(filter)}`,
+  sponsorItemCount: (filter?: any) => `sponsor-item:count:${JSON.stringify(filter)}`,
+  sponsorItemCountByStatus: (status: string) =>
+    `sponsor-item:count:status:${status}`,
+  allSponsorItems: () => `sponsor-items:all`,
+  allSponsorItemsByStatus: (status: string) =>
+    `sponsor-items:all:status:${status}`,
+  allSponsorItemsByDevice: (deviceId: string) =>
+    `sponsor-items:all:deviceId:${deviceId}`,
 };

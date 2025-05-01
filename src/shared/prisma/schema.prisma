@@ -135,6 +135,8 @@ model SponsorItem {
   count          Int
   sponsoredCount Int                   @default(0) @map("sponsored_count")
   contributions  SponsorContribution[]
+  createdAt      DateTime             @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt      DateTime             @updatedAt @map("updated_at") @db.Timestamptz
 
   @@map("sponsor_items")
   @@schema("sponsorship_schema")

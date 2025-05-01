@@ -1,5 +1,4 @@
 import { ObjectType, Field, ID, Float, registerEnumType } from '@nestjs/graphql';
-import { Device } from 'src/modules/device/models/device.model';
 import { DonationStatus as PrismaDonationStatus } from '@prisma/client';
 
 
