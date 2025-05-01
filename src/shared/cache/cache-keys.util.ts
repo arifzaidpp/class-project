@@ -50,5 +50,33 @@ export const cacheKeys = {
     `admins:search:${search}:take:${take}:skip:${skip}:field:${field}:direction:${direction}:filter:${JSON.stringify(filter)}`,
   adminCount: (filter?: any) => `admin:count:${JSON.stringify(filter)}`,
 
+  device: (id: string) => `device:id-${id}`,
+  devices: (
+    search = '',
+    take = 10,
+    skip = 0,
+    field = 'id',
+    direction = 'ASC',
+    filter?: any,
+  ) =>
+    `devices:search:${search}:take:${take}:skip:${skip}:field:${field}:direction:${direction}:filter:${JSON.stringify(filter)}`,
+  deviceCount: (filter?: any) => `device:count:${JSON.stringify(filter)}`,
   
+  donation: (id: string) => `donation:id-${id}`,
+  donations: (
+    search = '',
+    take = 10,
+    skip = 0,
+    field = 'id',
+    direction = 'ASC',
+    filter?: any,
+  ) =>
+    `donations:search:${search}:take:${take}:skip:${skip}:field:${field}:direction:${direction}:filter:${JSON.stringify(filter)}`,
+  donationCount: (filter?: any) => `donation:count:${JSON.stringify(filter)}`,
+  donationCountByDevice: (deviceId: string) =>
+    `donation:count:deviceId:${deviceId}`,
+  donationCountByStatus: (status: string) =>
+    `donation:count:status:${status}`,
+  donationCountByStatusAndDevice: (status: string, deviceId: string) =>
+    `donation:count:status:${status}:deviceId:${deviceId}`,
 };
