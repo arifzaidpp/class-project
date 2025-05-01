@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { PhoneIcon, ShareIcon, QrCodeIcon } from '@heroicons/react/24/outline'
-import { useDonationStats, useSponsors, useSponsorItems, useDeviceId } from '../hooks'
+import { useDonationStats, useSponsors, useSponsorItems, useDeviceId, useTopContributors } from '../hooks'
 
 function Home() {
   const navigate = useNavigate()
@@ -14,7 +14,8 @@ function Home() {
   const { data: statsData, loading: statsLoading } = useDonationStats()
   const { data: sponsorsData, loading: sponsorsLoading } = useSponsors()
   const { data: sponsorItemsData, loading: sponsorItemsLoading } = useSponsorItems()
-
+  const { data: topContributorsData, loading: topContributorsLoading } = useTopContributors();
+  
   const banners = [
     {
       image: "https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg",
@@ -98,11 +99,16 @@ function Home() {
 
   // This would normally come from a dedicated leaderboard query
   // For now we'll keep this static as an example
-  const topContributors = [
-    { name: "Anonymous", amount: "₹25,000", rank: 1 },
-    { name: "John Doe", amount: "₹20,000", rank: 2 },
-    { name: "Jane Smith", amount: "₹15,000", rank: 3 }
-  ]
+  const topContributors = topContributorsLoading || !topContributorsData ? [
+    // Fallback data until loading completes
+    { name: "Loading...", amount: "...", rank: 1 },
+    { name: "Loading...", amount: "...", rank: 2 },
+    { name: "Loading...", amount: "...", rank: 3 }
+  ] : topContributorsData.getTopDonorsOfYesterday.map((donor, index) => ({
+    name: donor.name || "Anonymous",
+    amount: `₹${donor.amount.toLocaleString('en-IN')}`,
+    rank: index + 1
+  }));
 
   const quickPayAmounts = [100, 500, 1000, 5000]
 
@@ -189,9 +195,14 @@ function Home() {
         </div>
 
         <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
-          <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-300 mb-4">Today's Top Contributors</h3>
-          <div className="space-y-4">
-            {topContributors.map((contributor, index) => (
+        <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-300 mb-4">Yesterday's Top Contributors</h3>
+        <div className="space-y-4">
+          {topContributorsLoading ? (
+            <div className="animate-pulse flex justify-center py-4">
+              <p className="text-gray-500 dark:text-gray-400">Loading top contributors...</p>
+            </div>
+          ) : (
+            topContributors.map((contributor, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
@@ -211,9 +222,10 @@ function Home() {
                 </div>
                 <span className="font-semibold text-primary-600 dark:text-primary-400">{contributor.amount}</span>
               </motion.div>
-            ))}
-          </div>
+            ))
+          )}
         </div>
+      </div>
       </section>
 
       {/* Quick Pay Section */}
