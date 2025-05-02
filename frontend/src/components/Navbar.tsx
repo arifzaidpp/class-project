@@ -45,7 +45,7 @@ function Navbar({ darkMode, setDarkMode }: NavbarProps) {
               </button>
             )}
             <Link to="/" className="text-2xl font-bold text-primary-600 dark:text-primary-400">
-              Smart Class
+            Munashata Smart Class
             </Link>
           </div>
           

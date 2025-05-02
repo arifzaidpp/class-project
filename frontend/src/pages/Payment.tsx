@@ -75,7 +75,7 @@ function Payment() {
                 >
                   <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Bank Details</h3>
                   <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                    <p>Account Name: Smart Class Fund</p>
+                    <p>Account Name: Munashata Smart Class Fund</p>
                     <p>Account Number: 1234567890</p>
                     <p>IFSC Code: SBIN0123456</p>
                     <p>Bank: State Bank of India</p>
